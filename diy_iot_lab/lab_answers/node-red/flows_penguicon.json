@@ -1,0 +1,257 @@
+[
+    {
+        "id": "246be00e.18f98",
+        "type": "inject",
+        "z": "e43f035d.9b879",
+        "name": "Time",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 119,
+        "y": 121,
+        "wires": [
+            [
+                "5590a0f0.bfe2f"
+            ]
+        ]
+    },
+    {
+        "id": "5590a0f0.bfe2f",
+        "type": "debug",
+        "z": "e43f035d.9b879",
+        "name": "Test",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 370,
+        "y": 126,
+        "wires": []
+    }
+]
+[
+    {
+        "id": "246be00e.18f98",
+        "type": "inject",
+        "z": "e43f035d.9b879",
+        "name": "Time",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 119,
+        "y": 121,
+        "wires": [
+            [
+                "a1d2323f.d3c8"
+            ]
+        ]
+    },
+    {
+        "id": "5590a0f0.bfe2f",
+        "type": "debug",
+        "z": "e43f035d.9b879",
+        "name": "Test",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 496,
+        "y": 118,
+        "wires": []
+    },
+    {
+        "id": "a1d2323f.d3c8",
+        "type": "function",
+        "z": "e43f035d.9b879",
+        "name": "Format Date",
+        "func": "// Create a Date object from the payload\n     var date = new Date(msg.payload);\n     // Change the payload to be a formatted Date string\n     msg.payload = date.toString();\n     // Return the message so it can be sent on\n     return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 326,
+        "y": 119,
+        "wires": [
+            [
+                "5590a0f0.bfe2f"
+            ]
+        ]
+    }
+]
+[
+    {
+        "id": "17111304.9ddff5",
+        "type": "mqtt in",
+        "z": "c60cb148.00db1",
+        "name": "MQTT subscribe",
+        "topic": "/stationxx/temp",
+        "qos": "0",
+        "broker": "29036c33.1e41c4",
+        "x": 125.28570556640625,
+        "y": 190.5714282989502,
+        "wires": [
+            [
+                "66bebf1d.2c9e28"
+            ]
+        ]
+    },
+    {
+        "id": "66bebf1d.2c9e28",
+        "type": "e-mail",
+        "z": "c60cb148.00db1",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "name": "",
+        "dname": "gmail out",
+        "x": 407.71435546875,
+        "y": 190.85714721679688,
+        "wires": []
+    },
+    {
+        "id": "29036c33.1e41c4",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "199.120.180.16",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    }
+]
+[
+    {
+        "id": "17111304.9ddff5",
+        "type": "mqtt in",
+        "z": "c60cb148.00db1",
+        "name": "MQTT subscribe",
+        "topic": "/stationxx/temp",
+        "qos": "0",
+        "broker": "29036c33.1e41c4",
+        "x": 125.28570556640625,
+        "y": 190.5714282989502,
+        "wires": [
+            [
+                "1479ef90.2027e"
+            ]
+        ]
+    },
+    {
+        "id": "66bebf1d.2c9e28",
+        "type": "e-mail",
+        "z": "c60cb148.00db1",
+        "server": "smtp.gmail.com",
+        "port": "465",
+        "secure": true,
+        "name": "",
+        "dname": "gmail out",
+        "x": 880.7143783569336,
+        "y": 367.8571319580078,
+        "wires": []
+    },
+    {
+        "id": "1479ef90.2027e",
+        "type": "switch",
+        "z": "c60cb148.00db1",
+        "name": "Test > 20 C",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "20",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "20",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 313.57143783569336,
+        "y": 191.42858123779297,
+        "wires": [
+            [
+                "cb7733c1.43a99"
+            ],
+            [
+                "a78bf27c.7bf83"
+            ]
+        ]
+    },
+    {
+        "id": "cb7733c1.43a99",
+        "type": "debug",
+        "z": "c60cb148.00db1",
+        "name": "Debug <= 20",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 491.42857142857133,
+        "y": 145.71428571428567,
+        "wires": []
+    },
+    {
+        "id": "20a3c42d.c865dc",
+        "type": "function",
+        "z": "c60cb148.00db1",
+        "name": "Convert to F",
+        "func": "// convert Celsius to Farenheit\nvar newtemp = new int (msg.payload);\nmsg.payload= (newtemp * 1.8) + 32;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 715.7143707275391,
+        "y": 305.7142972946167,
+        "wires": [
+            [
+                "66bebf1d.2c9e28"
+            ]
+        ]
+    },
+    {
+        "id": "a78bf27c.7bf83",
+        "type": "rbe",
+        "z": "c60cb148.00db1",
+        "name": "Check for changes",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "x": 514.2857112884521,
+        "y": 254.2857255935669,
+        "wires": [
+            [
+                "20a3c42d.c865dc"
+            ]
+        ]
+    },
+    {
+        "id": "29036c33.1e41c4",
+        "type": "mqtt-broker",
+        "z": "",
+        "broker": "199.120.180.16",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": ""
+    }
+]

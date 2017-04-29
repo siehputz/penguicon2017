@@ -1,0 +1,3079 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.8" />
+<title>DIY IOT Lab &#8201;&#8212;&#8201;Penguicon 2017</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install();
+/*]]>*/
+</script>
+</head>
+<body class="article">
+<div id="header">
+<h1>DIY IOT Lab &#8201;&#8212;&#8201;Penguicon 2017</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph"><p>Author    Dave Putz &lt;<a href="mailto:dwputz@gmail.com">dwputz@gmail.com</a>&gt;</p></div>
+<div class="paragraph"><p>Author    Connie Sieh &lt;<a href="mailto:cjsieh@gmail.com">cjsieh@gmail.com</a>&gt;</p></div>
+<div class="paragraph"><p><strong>Your  Station Name <em><em></em></em><em><em></em></em></strong></p></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_diy_iot_lab_outline">DIY IOT Lab Outline</h2>
+<div class="sectionbody">
+<div class="dlist"><div class="title">ESP8266 Arduino IDE , sensor,  Data Broker and Web Server Basics</div><dl>
+<dt class="hdlist1">
+Lab 1 
+</dt>
+<dd>
+<p>
+Familiarize yourself with the Arduino IDE, compiling, and uploading a program to the ESP8266
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 2 
+</dt>
+<dd>
+<p>
+Program the ESP8266 to gather and report DHT11 data from a sensor
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 3 
+</dt>
+<dd>
+<p>
+Program the ESP8266 to publish to a MQTT Broker
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 4 
+</dt>
+<dd>
+<p>
+Program the ESP8266 to publish DHT11 Temperature sensor data to a MQTT Broker
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 5 
+</dt>
+<dd>
+<p>
+Program the ESP8266 to be a Web Server
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 6 
+</dt>
+<dd>
+<p>
+Program the ESP8266 to be a Access Point and a Web Server
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 7 
+</dt>
+<dd>
+<p>
+Program the ESP8266 to display DHT11 sensor data via a local web server as a Access Point
+</p>
+</dd>
+</dl></div>
+<div class="dlist"><div class="title">Data Flow with Node-RED</div><dl>
+<dt class="hdlist1">
+Lab 8 
+</dt>
+<dd>
+<p>
+Familiarize yourself with Node-RED
+</p>
+</dd>
+<dt class="hdlist1">
+Lab 9 
+</dt>
+<dd>
+<p>
+Setup ESP8266 to publish to MQTT Broker, and configure a Node-RED flow to subscribe to MQTT and send email
+</p>
+</dd>
+</dl></div>
+<div class="dlist"><div class="title">ESP8266 No/Little Programming Frameworks</div><dl>
+<dt class="hdlist1">
+Lab 10 
+</dt>
+<dd>
+<p>
+Upload and configure ESPeasy to send DHT11 sensor data to MQTT Broker
+</p>
+</dd>
+</dl></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_1_arduino_ide_compiling_and_uploading_a_program_to_the_esp8266">LAB 1 :: Arduino IDE, compiling, and uploading a program to the ESP8266</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Log into the lab system with
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+user: arduino
+</p>
+</li>
+<li>
+<p>
+password: arduino
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Plug in the ESP8266 using the USB cable
+</p>
+</li>
+<li>
+<p>
+Click on the Arduino IDE icon to bring up the IDE, might be under
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>Activities&#8594;Show Programs</em>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <em>Tools&#8594;Board</em> and pick
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+“NodeMCU 1.0 (ESP 12-E Module)”
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on Tools and make sure
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+"Upload Speed" is set to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+115200
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+"Port" is set to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+/dev/ttyUSB0 or
+</p>
+</li>
+<li>
+<p>
+/dev/ttyUSB1
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <em>File&#8594;Examples&#8594;ESP8266&#8594;Blink</em> This should bring up a code window with the “Blink” program loaded.
+</p>
+</li>
+<li>
+<p>
+Take a look at this small program(sketch). Note that it has two main functions . All ESP8266 sketches will contain at least these two functions.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+setup() function, which is run once when the sketch starts
+</p>
+</li>
+<li>
+<p>
+loop() function, which is run in a loop after setup completes
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on the 'Check” icon on the toolbar to compile the sketch(program).
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+If you see no errors in the output window, click on the “Right Arrow” icon on the toolbar to upload the program to your ESP8266. You should see a progress indicator in the output window and the Blue LED (near antenna) blinking on the ESP8266.
+</p>
+</li>
+<li>
+<p>
+When the upload completes, the ESP8266 will start running the program. You should see the Red or Blue(near usb connector) LED turning off and on with a pause of one second between changes.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Edit the program to change the timing of the blinks. This will be done with the two lines that currently read
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+change it to whatever you like.
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000000">delay</span></span><span style="color: #990000">(</span><span style="color: #993399">1000</span><span style="color: #990000">);</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="10">
+<li>
+<p>
+Compile and upload the modified program.
+TIP: Can just click on the "upload arrow", and the IDE will compile before uploading
+</p>
+</li>
+<li>
+<p>
+Verify that the LED blink rate on your ESP8266 has successfully changed.
+</p>
+</li>
+</ol></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_2_dht11_temperature_and_humidity_sensor">LAB 2 :: DHT11(Temperature and Humidity) Sensor</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Load the example program for a DHT sensor.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Click on <em>File&#8594;Examples&#8594;DHT sensor library&#8594;DHTtester</em>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+uncomment(remove the //) on the
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+define line for DHTTYPE DHT11
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//#define DHTTYPE DHT11</span></span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTTYPE DHT11</tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="3">
+<li>
+<p>
+comment(Insert //) on the
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+define line for DHTTYPE for DHT22
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTTYPE DHT22</tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">//#define DHTTYPE DHT22</span></span></tt></pre></div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Tip</div>
+</td>
+<td class="content">It is a good programming practice to use defined values for pin numbers rather than actual numbers</td>
+</tr></table>
+</div>
+<div class="olist arabic"><ol class="arabic" start="4">
+<li>
+<p>
+change
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTPIN <span style="color: #993399">2</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTPIN D5</tt></pre></div></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">The DHT11 sensor is connected to GPIO(General Purpuse IO) pin D5</td>
+</tr></table>
+</div>
+<div class="olist arabic"><ol class="arabic" start="5">
+<li>
+<p>
+Because we are using a baud rate of 115200, you need to change
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>Serial<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">begin</span></span><span style="color: #990000">(</span><span style="color: #993399">9600</span><span style="color: #990000">);</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>Serial<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">begin</span></span><span style="color: #990000">(</span><span style="color: #993399">115200</span><span style="color: #990000">);</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="6">
+<li>
+<p>
+Compile and upload the sketch(program).
+</p>
+</li>
+<li>
+<p>
+Open the serial monitor window by clicking on <em>Tools&#8594;Serial Monitor</em>.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+You should see the temperature and humidity readings being displayed. Note that the Serial.print() functions in your program will always display to this monitor window.
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Try holding the sensor in your hand and/or blowing on it to see the readings change. Be careful not to detach any wires when doing this.
+</p>
+</li>
+<li>
+<p>
+Click on <em>File&#8594;Save As</em>   to save this version
+&lt;&lt;&lt;
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_3_mqtt">LAB 3 ::  MQTT</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Click on <em>File&#8594;Examples&#8594;Adafruit MQTT Library&#8594;mqtt_esp8266</em>
+</p>
+</li>
+<li>
+<p>
+Read through the source code. Note that this example was written to use a specific MQTT broker (io.adafruit.com) (most MQTT Brokers are compatible).  We are going to communicate with a local MQTT Broker called Mosquitto .
+</p>
+</li>
+<li>
+<p>
+Configure the ESP8266 Wifi to use the local lab network.  Change the program  at lines 24 and 25
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+WLAN_SSID: iotlab    (SSID of our created lab network)
+</p>
+</li>
+<li>
+<p>
+WLAN_PASS: iotlabpass    (PASS of our created lab network)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Configure the ESP8266 to communicate to a MQTT server.   You will use a MQTT Broker that is on the local  iotlab network.  Change line 29 and 31
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+AIO_SERVER
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Use your station 192.168.x.x ipaddress
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+“ip addr” to get ip addresses of your station in a terminal window
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+AIO_USERNAME
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+User your station name
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+AIO_KEY (empty)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change the name of your MQTT topic, which is done in the call to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Adafruit_MQTT_Publish().    Line 48
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Change the name to “temp”
+</p>
+</li>
+<li>
+<p>
+Change the literal from “feeds/photocell” to “feeds/temp”
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #008080">Adafruit_MQTT_Publish</span> photocell <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">Adafruit_MQTT_Publish</span></span><span style="color: #990000">(&amp;</span>mqtt<span style="color: #990000">,</span> AIO_USERNAME <span style="color: #FF0000">"/feeds/photocell"</span><span style="color: #990000">);</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #008080">Adafruit_MQTT_Publish</span> temp <span style="color: #990000">=</span> <span style="font-weight: bold"><span style="color: #000000">Adafruit_MQTT_Publish</span></span><span style="color: #990000">(&amp;</span>mqtt<span style="color: #990000">,</span> AIO_USERNAME <span style="color: #FF0000">"/feeds/temp"</span><span style="color: #990000">);</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Change line 107 to call "temp.publish" instead of "photocell.publish" since we changed the name to temp earlier .
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(!</span> photocell<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">publish</span></span><span style="color: #990000">(</span>x<span style="color: #990000">++))</span> <span style="color: #FF0000">{</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(!</span> temp<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">publish</span></span><span style="color: #990000">(</span>x<span style="color: #990000">++))</span> <span style="color: #FF0000">{</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Put in a 15-second delay between each publishing
+</p>
+</li>
+<li>
+<p>
+Click on <em>File&#8594;Save As</em>   to save this version
+</p>
+</li>
+<li>
+<p>
+Compile and upload the sketch(program)
+</p>
+</li>
+<li>
+<p>
+Keep the serial monitor window open so you can see any displayed messages or errors
+</p>
+</li>
+<li>
+<p>
+You should now be publishing the resukt of <em>x++</em> to a <em>mosquitto MQTT broker</em> on your lab station
+</p>
+</li>
+<li>
+<p>
+You can check this by
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Switch to the “iotlab” network by going to “Network Manager” Icon at top right of screen and selecting
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+SSID “iotlab”
+</p>
+</li>
+<li>
+<p>
+PASS “iotlabpass”
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+open a terminal window on the system and entering the command
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>mosquitto_sub -h localhost -v -u stationxx -P stationxxpass-t '#'</code></pre>
+</div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+where xx is your station number
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>NOTE:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code> -h localhost  -- &lt;name/ipaddress of mqtt broker system&gt;
+ -v            -- &lt;verbose&gt;
+ -t '#'        -- &lt;topic&gt; '#' means all topics</code></pre>
+</div></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_4_mqtt_amp_dht11">LAB 4 ::  MQTT &amp; DHT11</h2>
+<div class="sectionbody">
+<div class="olist arabic"><div class="title">Add/Change DHT code to MQTT code from LAB 3</div><ol class="arabic">
+<li>
+<p>
+Add in the necessary DHT code. You can cut &amp; paste from the DHT example.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Definitions
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"DHT.h"</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTPIN D5
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTTYPE DHT11
+<span style="color: #008080">DHT</span> <span style="font-weight: bold"><span style="color: #000000">dht</span></span><span style="color: #990000">(</span>DHTPIN<span style="color: #990000">,</span> DHTTYPE<span style="color: #990000">);</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Initialization of the DHT
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Add to setup(); the following code
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">begin</span></span><span style="color: #990000">();</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Add the read from the DHT to loop();
+</p>
+</li>
+<li>
+<p>
+Above the comment line in the loop() that follows
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Now we can publish stuff!”</span></span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+add the code from Lab 3 that reads the temperature from the DHT sensor
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// Read temperature as Fahrenheit (isFahrenheit = true)</span></span>
+<span style="color: #009900">float</span> f <span style="color: #990000">=</span> dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">readTemperature</span></span><span style="color: #990000">(</span>true<span style="color: #990000">);</span>
+<span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(</span><span style="font-weight: bold"><span style="color: #000000">isnan</span></span><span style="color: #990000">(</span>f<span style="color: #990000">))</span> <span style="color: #FF0000">{</span>
+    Serial<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">println</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"Failed to read from DHT sensor!"</span><span style="color: #990000">);</span>
+  <span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Change the temp.publish line from "x++" to "f" since the DHT11 temp is in "f"
+</p>
+</li>
+<li>
+<p>
+from
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(!</span> photocell<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">publish</span></span><span style="color: #990000">(</span>x<span style="color: #990000">++))</span> <span style="color: #FF0000">{</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+to
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #0000FF">if</span></span> <span style="color: #990000">(!</span> temp<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">publish</span></span><span style="color: #990000">(</span>f<span style="color: #990000">))</span> <span style="color: #FF0000">{</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="2">
+<li>
+<p>
+Compile and upload the sketch. Check your mosquitto_sub screen from Lab 3 to see that the sequential numbers have changed to temperatures.
+</p>
+</li>
+<li>
+<p>
+Click on <em>File&#8594;Save As</em>   to save this version
+</p>
+</li>
+</ol></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_5_esp8266_running_a_web_server">LAB 5 :: ESP8266 running a Web Server</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Load the example ESP8266 web server sketch <em>File&#8594;Examples&#8594;ESP8266WebServer&#8594;HelloServer</em>
+</p>
+</li>
+<li>
+<p>
+Look at the code. Note in particular that the loop() function consists of only a single function call.
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>server<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">handleClient</span></span><span style="color: #990000">();</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Modify the values assigned to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+SSID “iotlab”
+</p>
+</li>
+<li>
+<p>
+PASS “iotlabpass”
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Compile and upload the sketch
+</p>
+</li>
+<li>
+<p>
+Since multiple stations may be running this code at the same time, you will need to look at the serial monitor when the sketch starts running to see what IP address was assigned to it. The IPADDRESS is provided by the iotlab router via  dhcp.
+</p>
+</li>
+<li>
+<p>
+Using a smartphone or tablet or your station  connect to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+SSID:  iotlab
+</p>
+</li>
+<li>
+<p>
+PASS:  iotlabpass
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+enter your ESP8266&#8217;s IP address in the URL bar.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+You should see a screen back that contains just a hello message. Note that this response was created by the handleRoot() function in the sketch, which was assigned to the root page by the line:
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>server<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">on</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"/"</span><span style="color: #990000">,</span> handleRoot<span style="color: #990000">);.</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="6">
+<li>
+<p>
+Click on <em>File&#8594;Save As</em>   to save this version
+</p>
+</li>
+</ol></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_6_esp8266_as_a_access_point_and_web_server">LAB 6 :: ESP8266 as a Access Point and Web Server</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Load the example <em>File&#8594;Examples&#8594;ESP8266Wifi&#8594;WiFiAccessPoint</em> and look at the differences in the wifi initialization.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+You will need to make your own "network" since the ESP will be a Access Point
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+ssid (use your station name)
+</p>
+</li>
+<li>
+<p>
+password (your choice)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Insert
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Since the default IPADDRESS is 192.168.4.1 you will need to change that since there are many EPS8266 in the lab.
+</p>
+</li>
+<li>
+<p>
+where xx is replaced by your station number , just to make it unique
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #008080">IPAddress</span> <span style="font-weight: bold"><span style="color: #000000">apIP</span></span><span style="color: #990000">(</span><span style="color: #993399">192</span><span style="color: #990000">,</span><span style="color: #993399">168</span><span style="color: #990000">,</span>xx<span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+WiFi<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">mode</span></span><span style="color: #990000">(</span>WIFI_AP_STA<span style="color: #990000">);</span>
+WiFi<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">softAPConfig</span></span><span style="color: #990000">(</span>apIP<span style="color: #990000">,</span> apIP<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #000000">IPAddress</span></span><span style="color: #990000">(</span><span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">));</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+before
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>WiFi<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">softAP</span></span><span style="color: #990000">(</span>ssid<span style="color: #990000">,</span> password<span style="color: #990000">);</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+It should now look like
+</p>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #008080">IPAddress</span> <span style="font-weight: bold"><span style="color: #000000">apIP</span></span><span style="color: #990000">(</span><span style="color: #993399">192</span><span style="color: #990000">,</span><span style="color: #993399">168</span><span style="color: #990000">,</span>xx<span style="color: #990000">,</span><span style="color: #993399">1</span><span style="color: #990000">);</span>
+WiFi<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">mode</span></span><span style="color: #990000">(</span>WIFI_AP_STA<span style="color: #990000">);</span>
+WiFi<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">softAPConfig</span></span><span style="color: #990000">(</span>apIP<span style="color: #990000">,</span> apIP<span style="color: #990000">,</span> <span style="font-weight: bold"><span style="color: #000000">IPAddress</span></span><span style="color: #990000">(</span><span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">255</span><span style="color: #990000">,</span> <span style="color: #993399">0</span><span style="color: #990000">));</span>
+WiFi<span style="color: #990000">,</span><span style="font-weight: bold"><span style="color: #000000">softAP</span></span><span style="color: #990000">(</span>ssid<span style="color: #990000">,</span>password<span style="color: #990000">);</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="3">
+<li>
+<p>
+Compile and upload the sketch
+</p>
+</li>
+<li>
+<p>
+Using a smartphone or tablet or your station  connect to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+the network with the SSID and the password you created
+</p>
+</li>
+<li>
+<p>
+Enter the IP address you specified in a web browser
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+You should see a screen back that contains just a hello message
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <em>File&#8594;Save As</em>   to save this version
+
+&lt;&lt;&lt;
+</p>
+</li>
+</ol></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_7_esp8266_as_a_access_point_and_web_server_displaying_dht11_data">LAB 7 ::  ESP8266 as a Access Point and Web Server displaying DHT11 data</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_change_the_lab_6_program_to_return_temperature_and_humidity_readings_when_a_page_other_than_the_root_page_is_used">Change the LAB 6 program to return temperature and humidity readings when a page other than the root page is used.</h3>
+<div class="olist arabic"><div class="title">Copy &amp; paste the necessary DHT lines from the DHT example as you did in Lab 4.</div><ol class="arabic">
+<li>
+<p>
+Add the DHT definition lines
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-weight: bold"><span style="color: #000080">#include</span></span> <span style="color: #FF0000">"DHT.h"</span>
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTPIN D5
+<span style="font-weight: bold"><span style="color: #000080">#define</span></span> DHTTYPE DHT11
+<span style="color: #008080">DHT</span> <span style="font-weight: bold"><span style="color: #000000">dht</span></span><span style="color: #990000">(</span>DHTPIN<span style="color: #990000">,</span> DHTTYPE<span style="color: #990000">);</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="2">
+<li>
+<p>
+Add the DHT initalize to setup();
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">begin</span></span><span style="color: #990000">();</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="3">
+<li>
+<p>
+Add the code to read the DHT11 sensor to a new handleTemp() function
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">handleTemp</span></span><span style="color: #990000">()</span> <span style="color: #FF0000">{</span>
+  <span style="color: #009900">float</span> h <span style="color: #990000">=</span> dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">readHumidity</span></span><span style="color: #990000">();</span>
+  <span style="color: #009900">float</span> f <span style="color: #990000">=</span> dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">readTemperature</span></span><span style="color: #990000">(</span>true<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="4">
+<li>
+<p>
+Add server.send() call to handleTemp() to send the data back to the client when the web page requests it
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://links2004.github.io/Arduino/d3/d58/class_e_s_p8266_web_server.html">https://links2004.github.io/Arduino/d3/d58/class_e_s_p8266_web_server.html</a>
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="color: #009900">void</span> <span style="font-weight: bold"><span style="color: #000000">handleTemp</span></span><span style="color: #990000">()</span> <span style="color: #FF0000">{</span>
+  <span style="color: #008080">String</span> message <span style="color: #990000">=</span> <span style="color: #FF0000">""</span><span style="color: #990000">;</span>
+  <span style="color: #009900">float</span> h <span style="color: #990000">=</span> dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">readHumidity</span></span><span style="color: #990000">();</span>
+  <span style="color: #009900">float</span> f <span style="color: #990000">=</span> dht<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">readTemperature</span></span><span style="color: #990000">(</span>true<span style="color: #990000">);</span>
+  message <span style="color: #990000">=</span> <span style="color: #FF0000">"Temperature is : "</span><span style="color: #990000">;</span>
+  message <span style="color: #990000">+=</span> f<span style="color: #990000">;</span>
+  message <span style="color: #990000">+=</span> <span style="color: #FF0000">" Humidity is : "</span><span style="color: #990000">;</span>
+  message <span style="color: #990000">+=</span> h<span style="color: #990000">;</span>
+  message <span style="color: #990000">+=</span> <span style="color: #FF0000">"</span><span style="color: #CC33CC">\n</span><span style="color: #FF0000">"</span> <span style="color: #990000">;</span>
+  server<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">send</span></span><span style="color: #990000">(</span><span style="color: #993399">200</span><span style="color: #990000">,</span> <span style="color: #FF0000">"text/plain"</span><span style="color: #990000">,</span> message<span style="color: #990000">);</span>
+<span style="color: #FF0000">}</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="5">
+<li>
+<p>
+Call handleTemp in setup() after server.on("/", handleRoot) when user enters URL ending in <strong>/temp</strong>
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>server<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">on</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"/"</span><span style="color: #990000">,</span> handleRoot<span style="color: #990000">);</span>
+server<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">on</span></span><span style="color: #990000">(</span><span style="color: #FF0000">"/temp"</span><span style="color: #990000">,</span> handleTemp<span style="color: #990000">);</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="6">
+<li>
+<p>
+Compile and upload the sketch.
+</p>
+</li>
+<li>
+<p>
+Using a smartphone or tablet or lab station connect to the wifi network with the SSID and password you created.
+</p>
+</li>
+<li>
+<p>
+Enter the IP address followed by “/temp” in the URL bar. This should return your web page with the data from the DHT displayed.
+</p>
+</li>
+</ol></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_8_familiarize_yourself_with_node_red">LAB 8 :: Familiarize Yourself with Node-RED</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_create_a_basic_node_red_flow_and_see_how_to_connect_nodes">Create a basic Node-Red flow and see how to connect nodes</h3>
+<div class="olist arabic"><ol class="arabic" start="1">
+<li>
+<p>
+Open a browser on your lab system.
+</p>
+</li>
+<li>
+<p>
+Enter “localhost:1880” in the URL bar. Note that 1880 is the
+default port for Node-RED, and can be changed in the settings.js
+file.
+</p>
+</li>
+<li>
+<p>
+You will see the Node-RED screen, with node choices on the left,
+the design screen in the middle, and info and debug tabs on the
+right.
+</p>
+</li>
+<li>
+<p>
+Click and drag an “inject” input node onto the design screen.
+</p>
+</li>
+<li>
+<p>
+Double clicking on the new node will bring up an edit window on
+the screen. For now, just change the name to “Time” and click
+“Done”.
+</p>
+</li>
+<li>
+<p>
+Click and drag a “debug” output node onto the design screen.
+</p>
+</li>
+<li>
+<p>
+Change its name to “Test”.
+</p>
+</li>
+<li>
+<p>
+Connect the two nodes by clicking on the right side of the “Time”
+node and dragging a line to the left side of the “Test” node.
+</p>
+</li>
+<li>
+<p>
+Click on the “Deploy” button on the top right. Note that in
+Node-RED no changes take effect until they are deployed.
+</p>
+</li>
+<li>
+<p>
+Click on the debug tab on the right side to show the debug
+screen.
+</p>
+</li>
+<li>
+<p>
+Click on the button on the left side of the “Time” node. This
+activates that node. Look at the debug window to see the
+timestamp displayed.
+</p>
+</li>
+</ol></div>
+<div class="sect3">
+<h4 id="_part_2_modify_the_flow_to_add_a_function_node">Part 2 ::Modify the flow to add a function node</h4>
+<div class="olist arabic"><ol class="arabic" start="1">
+<li>
+<p>
+Click on the line between the two nodes, and hit “delete” on
+the keyboard to remove it.
+</p>
+</li>
+<li>
+<p>
+Click and drag a function node between the two existing
+nodes. You can move the existing nodes around on the screen if
+needed to make space.
+</p>
+</li>
+<li>
+<p>
+Double-click on the function node to bring up the edit
+window, and enter the following code:
+</p>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>     <span style="font-style: italic"><span style="color: #9A1900">// Create a Date object from the payload</span></span>
+     <span style="color: #008080">var</span> date <span style="color: #990000">=</span> <span style="color: #008080">new</span> <span style="font-weight: bold"><span style="color: #000000">Date</span></span><span style="color: #990000">(</span>msg<span style="color: #990000">.</span>payload<span style="color: #990000">);</span>
+     <span style="font-style: italic"><span style="color: #9A1900">// Change the payload to be a formatted Date string</span></span>
+     msg<span style="color: #990000">.</span>payload <span style="color: #990000">=</span> date<span style="color: #990000">.</span><span style="font-weight: bold"><span style="color: #000000">toString</span></span><span style="color: #990000">();</span>
+     <span style="font-style: italic"><span style="color: #9A1900">// Return the message so it can be sent on</span></span>
+     <span style="font-weight: bold"><span style="color: #0000FF">return</span></span> msg<span style="color: #990000">;</span></tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="4">
+<li>
+<p>
+Click “Done”, and then connect the output of the “Time”
+node to the input of the function node, and the output of the
+function node to the input of the “Test” node.
+</p>
+</li>
+<li>
+<p>
+Deploy the flow, then click on the activate button on the
+“Time” node. You should now see a formatted date in the debug
+window.
+</p>
+</li>
+</ol></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_9_setup_esp8266_to_publish_to_mqtt_broker_and_configure_a_node_red_flow_to_subscribe_to_mqtt_and_send_email">LAB 9 :: Setup ESP8266 to publish to MQTT broker, and configure a Node-RED flow to subscribe to MQTT and send email</h2>
+<div class="sectionbody">
+<div class="olist arabic"><ol class="arabic" start="1">
+<li>
+<p>
+Reload the MQTT sketch from Lab 3 into your ESP8266.
+</p>
+</li>
+<li>
+<p>
+On your Node-RED screen, click on the “+” button on the top right of the design screen to open another flow.
+</p>
+</li>
+<li>
+<p>
+Double-click on the flow name to bring up its edit window. Change the name to “MQTT-Test”. Note that this is also where you would delete a flow that you no longer want. Click “Done”.
+</p>
+</li>
+<li>
+<p>
+Drag a mqtt node from the input list onto the design screen. Note that there is also a mqtt node in the output section, which we do not want to use here.
+</p>
+</li>
+<li>
+<p>
+Double-click on the mqtt node to bring up the edit window. Since your mosquitto broker and Node-RED are running on the same system, enter “localhost:1883” in the Server box.
+</p>
+</li>
+<li>
+<p>
+Enter the topic name you used from Lab 3 in the Topic box.
+</p>
+</li>
+<li>
+<p>
+Change the QOS from 2 to 0.
+</p>
+</li>
+<li>
+<p>
+Change the name to “MQTT subscribe” and hit “Done”.
+</p>
+</li>
+<li>
+<p>
+Click and drag an e-mail output node from the “social” group. Note that you may have to scroll down to see this one. Also, make sure you get the output node (connector on the left) and not the input node (connector on the right).
+</p>
+</li>
+<li>
+<p>
+Double-click the email node to bring up the edit window.
+</p>
+</li>
+<li>
+<p>
+Enter your own email address in the “To” box, “penguiconlab1” in the Userid box, and “Test.123!” in the password box.
+</p>
+</li>
+<li>
+<p>
+Change the name to gmail-out, and click “Done”
+</p>
+</li>
+<li>
+<p>
+Connect the two nodes, and deploy.
+</p>
+</li>
+<li>
+<p>
+Log into your email account, and check for incoming messages. Note that you could be getting one every 15 seconds, so if it is working you may want to unplug the ESP8266 after a few emails, or change the delay timer in your sketch.
+</p>
+</li>
+</ol></div>
+<div class="sect2">
+<h3 id="_further_possibilities_if_time_permits_you_may_want_to_try_out_other_nodes_some_suggestions">Further possibilities - If time permits, you may want to try out other nodes. Some suggestions:</h3>
+<div class="paragraph"><p>A)  Add a switch node to test on the message from the MQTT broker; and only email if it exceeds some value. Send all other values to a debug node.</p></div>
+<div class="paragraph"><p>B)  Add a function node to convert the temperature from what your are getting (either Fahrenheit or Celsius ) to the other scale.
+   One possible function to do this</p></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt><span style="font-style: italic"><span style="color: #9A1900">// convert Celsius to Farenheit</span></span>
+<span style="color: #008080">var</span> newtemp <span style="color: #990000">=</span> <span style="color: #008080">new</span> <span style="color: #009900">int</span> <span style="color: #990000">(</span>msg<span style="color: #990000">.</span>payload<span style="color: #990000">);</span>
+msg<span style="color: #990000">.</span>payload<span style="color: #990000">=</span> <span style="color: #990000">(</span>newtemp <span style="color: #990000">*</span> <span style="color: #993399">1.8</span><span style="color: #990000">)</span> <span style="color: #990000">+</span> <span style="color: #993399">32</span><span style="color: #990000">;</span>
+<span style="font-weight: bold"><span style="color: #0000FF">return</span></span> msg<span style="color: #990000">;</span></tt></pre></div></div>
+<div class="paragraph"><p>C) Insert an rbe (report-by-exception) node to only pass on the message if the temperature has changed.</p></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_10_esp8266_using_espeasy_framework">LAB 10 ::  ESP8266 Using ESPeasy Framework</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_install_and_configure_espeasy_to_send_dht11_sensor_data_to_a_mqtt_broker">Install and Configure ESPeasy to send DHT11 sensor data to a MQTT broker</h3>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Look at <a href="https://www.letscontrolit.com/wiki/index.php/ESPEasy#Get_started">https://www.letscontrolit.com/wiki/index.php/ESPEasy#Get_started</a>
+</p>
+</li>
+<li>
+<p>
+Upload the precompiled ESPeasy firmware to esp8266
+</p>
+</li>
+</ol></div>
+<div class="admonitionblock">
+<table><tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">Precompiled image is located at <a href="http://www.letscontrolit.com/downloads/ESPEasy_R120.zip">http://www.letscontrolit.com/downloads/ESPEasy_R120.zip</a> .  This has already been downloaded and unziped to your stations. I included the Linux script to install this firmware to the esp8266 as mentioned at <a href="https://www.letscontrolit.com/wiki/index.php/Tutorial_ESPEasy_Firmware_Upload">https://www.letscontrolit.com/wiki/index.php/Tutorial_ESPEasy_Firmware_Upload</a> .</td>
+</tr></table>
+</div>
+<div class="olist arabic"><ol class="arabic" start="3">
+<li>
+<p>
+Look at <a href="https://www.letscontrolit.com/wiki/index.php/Tutorial_ESPEasy_Firmware_Upload">https://www.letscontrolit.com/wiki/index.php/Tutorial_ESPEasy_Firmware_Upload</a>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+You have a nodemcu version of esp8266 so we have to select
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+4096K version of the ESPeasy firmware in the next step
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Start a terminal window
+</p>
+</li>
+<li>
+<p>
+Run espeasyflash.sh
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+espeasyflash script will ask for
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+USB Serial port to upload to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+/dev/ttyUSB0 or
+</p>
+</li>
+<li>
+<p>
+/dev/ttyUSB1
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Determine which serial port with
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>ls /dev/ttyUSB<span style="color: #990000">*</span></tt></pre></div></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Firmware to upload
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+4 ESPEasy_R147_4096.bin
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="listingblock">
+<div class="content"><!-- Generator: GNU source-highlight 3.1.6
+by Lorenzo Bettini
+http://www.lorenzobettini.it
+http://www.gnu.org/software/src-highlite -->
+<pre><tt>cd Downloads/arduinoimages/esp<span style="color: #993399">8266</span>-frameworks/espeasy
+<span style="color: #990000">.</span>/espeasyflash<span style="color: #990000">.</span>sh</tt></pre></div></div>
+<div class="olist arabic"><ol class="arabic" start="6">
+<li>
+<p>
+After flash is done
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Start Arduino Serial Console
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<strong>AFTER</strong> all of the flash clearing is done and your see
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>wdt reset</em>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Reboot esp8266 via reset button
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Configure ESPeasy running on your esp8266 via ESP Easy web interface
+</p>
+<div class="olist loweralpha"><ol class="loweralpha">
+<li>
+<p>
+Configure Network Settings
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://www.letscontrolit.com/wiki/index.php/ESPEasy#Config_page">https://www.letscontrolit.com/wiki/index.php/ESPEasy#Config_page</a>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Using a tablet or smart phone or your station look for WIFI networks with a
+SSID of ESP_0 ( this might be confusing if many do this at the same time)
+</p>
+</li>
+<li>
+<p>
+Connect to ESP_0 wifi network
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Password is <em>configesp</em>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+In a web browser go to 192.168.4.1  (default ip address ,  might be confusing if many do this at the same time)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Should see <em>Welcome to ESP Easy:newdevice</em>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Click on <em>iotlab</em>  Network
+</p>
+</li>
+<li>
+<p>
+Password <em>iotlabpass</em>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <em>Connect</em>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Should get a "Please wait for &#8230; while trying to connect"
+</p>
+</li>
+<li>
+<p>
+Note the IP ADDRESS given by dhcp
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Using a tablet, smart phone or your station switch to the Network with SSID
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+iotlab
+</p>
+</li>
+<li>
+<p>
+Password <em>iotlabpass</em>
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Review this first screen
+</p>
+</li>
+<li>
+<p>
+Click on <em>Config</em>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Change "Name" to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+easyxx
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+where xx is your station number
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change "Admin Password" to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+easyxxpass
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+where xx is your station number
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+"SSID" should already be
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+iotlab
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+"WPA Key" should already be
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+iotlabpass
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change "Protocol"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+"OpenHab MQTT"
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change "Controller IP"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+your station 192.168.10.x" address, address was assigned via dhcp
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Should already have "Controller Port" set to
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+1883
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+MQTT default port
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change "Controller User"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+stationxx
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+where xx is your station number
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change "Controller Password"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+stationxxpass
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+where xx is your station number
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on "<strong>Submit</strong>" at botton of page to save settings to esp8266 flash
+</p>
+</li>
+<li>
+<p>
+Bring up Arduino console window to determine IP address assigned via dhcp on next reboot
+</p>
+</li>
+<li>
+<p>
+Reboot by pressing "reset" button or via "Tools" tab "Reboot" button
+</p>
+</li>
+<li>
+<p>
+Login to esp8266 as with ipaddress that Arduino Console shows
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+esp8266 is now on iotlab network
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Configure Hardware settings Boot State (GPIO pins)
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://www.letscontrolit.com/wiki/index.php/ESPEasy#Config_page">https://www.letscontrolit.com/wiki/index.php/ESPEasy#Config_page</a>
+</p>
+</li>
+<li>
+<p>
+There should not be any need to change these for this lab
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Configure Devices settings
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://www.letscontrolit.com/wiki/index.php/ESPEasy#Devices_page">https://www.letscontrolit.com/wiki/index.php/ESPEasy#Devices_page</a>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Click on the 'Devices" tab
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Click on "Edit" of "Task 1"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Select Device
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+"Temperature &amp; Humidity - DHT"
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Name
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+&lt;what ever you want&gt;
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Delay
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+time in miliseconds
+</p>
+</li>
+<li>
+<p>
+500
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+IDX/Var
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+1 &#8201;&#8212;&#8201; It is the first so 1 is good
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+1st GPIO
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+GPIO-14
+</p>
+</li>
+<li>
+<p>
+which is (D5) (look on Pin diagram)
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Send Data
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+checked
+</p>
+</li>
+<li>
+<p>
+sends data to protocol/controller defined in "Network Settings"
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Optional Settings
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Formula Temperature  -  Since DHT library defaults to Celcius could change
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+%value% * 9/5 + 32
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Value Name 1 &#8201;&#8212;&#8201;Will show as name used in MQTT
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Should already be <em>Temperature</em>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Value Name 2 &#8201;&#8212;&#8201;Will show as name used in MQTT
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Should already be <em>Humidity</em>
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <strong>Submit</strong> to save
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Configure Tools settings
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://www.letscontrolit.com/wiki/index.php/ESPEasy#Tools_page">https://www.letscontrolit.com/wiki/index.php/ESPEasy#Tools_page</a>
+</p>
+</li>
+<li>
+<p>
+Click on the 'Tools" tab
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+System/Advanced
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Look it over&#8201;&#8212;&#8201;no changes needed for lab
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Settings/Save
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Can save setting for later reload via Settings/Load
+</p>
+</li>
+<li>
+<p>
+Good idea so as to not have to enter by hand again
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Firmware Load
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Allows for OTA (Over the Air) updates
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Command
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Can enter commands , mostly for testing
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+See <a href="https://www.letscontrolit.com/wiki/index.php/ESPEasy_Command_Reference">https://www.letscontrolit.com/wiki/index.php/ESPEasy_Command_Reference</a>
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <strong>Submit</strong> to save
+</p>
+</li>
+<li>
+<p>
+Bring up Arduino console window to note boot messages
+</p>
+</li>
+<li>
+<p>
+Reboot by pressing "reset" button or via "Tools" tab "Reboot" button
+</p>
+</li>
+</ul></div>
+</li>
+</ol></div>
+</li>
+<li>
+<p>
+Check that esp8266 is reading the DHT11 and sending data to MQTT
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Login to esp8266 as with ipaddress that Arduino Console shows
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+esp8266 is now on iotlab network
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on Tools/Advanced
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Change "Serial Log Level"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+4
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Change "Web Log Level"
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+4
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Click on <strong>Submit</strong> to save
+</p>
+</li>
+<li>
+<p>
+Bring up Arduino Serial console window to see serial log messages
+</p>
+</li>
+<li>
+<p>
+Reboot by pressing "reset" button or via "Tools" tab "Reboot" button
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Should see MQTT messages (along with others)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Check that MQTT on your station is receiving data from the esp8266
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+On your station in a terminal window
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+mosquitto_sub -h localhost -u stationxx -P stationxxpass -v -t <em>'#</em>'
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+where xx is your station number
+</p>
+</li>
+<li>
+<p>
+Note <em>'#</em>' is the wildcard for all topics
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ol></div>
+<div style="page-break-after:always"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_lab_setup_these_have_already_been_done">LAB SETUP :: These have already been done</h2>
+<div class="sectionbody">
+<div class="ulist"><ul>
+<li>
+<p>
+SOFTWARE
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+The Arduino IDE has been installed on the lab system.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+This can be found online at <a href="https://www.arduino.cc/en/main/software">https://www.arduino.cc/en/main/software</a>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Version 1.8.1 was installed
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+The Arduino IDE has been configured to pick up the ESP8266 board definition by adding <em>http://arduino.esp8266.com/stable/package_esp8266com_index.json</em> to <em>File&#8594;Preferences&#8594;Settings</em> “Additional Boards Manager URLS”.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://esp8266.github.io/Arduino/versions/2.3.0/doc/installing.html">http://esp8266.github.io/Arduino/versions/2.3.0/doc/installing.html</a>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Arduino libraries and ESP8266 specific libraries have been installed
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+In the Arduino IDE, Click on <em>Sketch&#8594;Include Libraries&#8594;Manage Libraries</em>
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://esp8266.github.io/Arduino/versions/2.3.0/doc/libraries.html">http://esp8266.github.io/Arduino/versions/2.3.0/doc/libraries.html</a>
+</p>
+</li>
+<li>
+<p>
+The following libraries have been installed:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+ESP8266
+</p>
+</li>
+<li>
+<p>
+Adafruit MQTT Library
+</p>
+</li>
+<li>
+<p>
+DHT Sensor library by Adafruit
+</p>
+</li>
+<li>
+<p>
+Adafruit Unified Sensor by Adafruit (dependency of DHT Sensor)
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+ESP8266 Arduino reference doc
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="http://esp8266.github.io/Arduino/versions/2.3.0/">http://esp8266.github.io/Arduino/versions/2.3.0/</a>
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+The mosquitto MQTT broker has been installed. This can be found online at <a href="https://mosquitto.org/download/">https://mosquitto.org/download/</a> or by using “apt-get mosquitto”.
+</p>
+</li>
+<li>
+<p>
+The Node-RED flow manager software has been installed. Instructions on how to do this can be found at <a href="https://nodered.org/docs/getting-started/installation">https://nodered.org/docs/getting-started/installation</a> .
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+HARDWARE
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+A NodeMCU ESP8266 development board has been mounted on a breadboardand wired up to a DHT11 temperature/humidity sensor.
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+NodeMCU ESP8266 v1.0
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<a href="https://github.com/nodemcu/nodemcu-devkit-v1.0">https://github.com/nodemcu/nodemcu-devkit-v1.0</a>
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+DHT11 breakout board
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+The + pin of the DHT11 goes to 3v3
+</p>
+</li>
+<li>
+<p>
+The – pin of the DHT11 goes to GND
+</p>
+</li>
+<li>
+<p>
+The OUT pin of the DHT11 goes to D5
+</p>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Frizing diagram of the ESP8226 lab hardware
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="paragraph"><p><span class="image">
+<img src="/home/siehputz/Downloads/diyiot/images/nodemcu-diy-iot_bb.jpg" alt="Fritzing Diagram of lab ESP8266" />
+</span></p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Diagram of the wiring of the Solderless Breadboard
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p><span class="image">
+<img src="/home/siehputz/Downloads/diyiot/images/basic_breadboard_layout.png" alt="Solderless Breadboard Wiring" />
+</span>]</p></div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-04-25 18:13:32 CDT
+</div>
+</div>
+</body>
+</html>
